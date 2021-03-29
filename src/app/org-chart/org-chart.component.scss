@@ -1,0 +1,144 @@
+//dimensiones
+$profile-tam: 150px;
+//colores
+$btn-delete-bg: #fff;
+$btn-delete: rgb(242,0,1);
+$btn-guardar:rgb(74,211,149);
+
+:host ::ng-deep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: inherit;
+
+    /* Contenedor padre de la card */
+    .container{
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      
+      /* Estilos para la card, tiene un alto y ancho menor al contenedor para poder posicionar la foto de perfil dentro del contedor padre y fuera de la card */
+      .cardContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        height: 75%;
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px rgba($color: #000000, $alpha: .3);
+        position: relative;
+        margin-bottom: 25px;
+        box-sizing: border-box;
+  
+        .imgContainer{
+          border-radius: 50%;
+          width: $profile-tam;
+          height: $profile-tam;
+          position: absolute;
+          top: ((-1 * $profile-tam)/2) - 10px;
+          left: calc(50% - 75px);
+          overflow: hidden;
+          .img{
+            height: $profile-tam;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .infoCard{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          font-family: 'Roboto', sans-serif;
+          margin-top: $profile-tam/2 + 10px;
+          padding: 20px;
+          height: 100%;
+          h3{
+            margin: 0;
+            font-size: 30px;
+            font-weight: 500;
+            // margin-bottom: 8px;
+            span{
+              font-weight: 300;
+            }
+          }
+          &-cargo{
+            display: flex;
+            justify-content: center;
+          }
+        }
+
+        .delete{
+          position: absolute;
+          background: none;
+          top: -20px;
+          right: 0px;
+          // border-radius: 50%;
+          overflow: hidden;
+          i {
+            background: $btn-delete-bg;
+            color: $btn-delete;
+            font-size: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+          }
+        }
+
+        .agregar{
+          position: absolute;
+          background: none;
+          top: calc(100% - 20px);
+          right: calc(50% - 20px);
+          // border-radius: 50%;
+          overflow: hidden;
+          i {
+            background: #fff;
+            color: $btn-guardar;
+            font-size: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+          }
+        }
+  
+        .name {
+          font-size: 30px;
+        }
+    
+        label {
+          text-align: center;
+          font-size: 30px;
+          margin-top: 4px;
+          margin-bottom: 8px;
+          color: #000;
+          padding: 5px 10px;
+          border-radius: 10px;
+          margin: 0;
+        }
+      }
+    }
+
+    .containerAnim{
+      animation: animation .5s ease-in;
+    }
+
+    @keyframes animation{
+      0%    {transform: scale(1.1);}
+      10%   {transform: scale(1);}
+      20%   {transform: scale(0.9);}
+      30%   {transform: scale(0.8);}
+      40%   {transform: scale(0.7);}
+      50%   {transform: scale(0.6);}
+      60%   {transform: scale(0.5);}
+      70%   {transform: scale(0.4);}
+      80%   {transform: scale(0.3);}
+      90%   {transform: scale(0.2);}
+      100%  {transform: scale(0.1);}
+    }
+
+    .edge {
+      stroke: #0083FF !important;
+    }
+  }

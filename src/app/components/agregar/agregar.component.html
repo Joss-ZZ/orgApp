@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="container-title">
+        <h2>
+            Agregar {{(!data.data.upperManagerId)?'Empresa':(data.data.tipo)?'Empleado':'Área/Equipo'}}
+        </h2>
+    </div>
+    <div class="container-body">
+        <div *ngIf="(data.data.upperManagerId); else formEmpresa">
+            <app-add-empleado (onActionClick)="accion($event)" [data]="data"></app-add-empleado>
+        </div>
+        <ng-template #formEmpresa>
+            <app-add-empresa (onActionClick)="accion($event)" [data]="data"></app-add-empresa>
+        </ng-template>
+    </div>
+</div>

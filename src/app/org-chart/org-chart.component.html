@@ -1,0 +1,84 @@
+
+
+<ngx-graph
+  [view]="[1200, 600]"
+  [links]="links"
+  [nodes]="nodes"
+  [curve]="curve"
+  [layout]="layout"
+  [nodeWidth]="450"
+  [nodeHeight]="450"
+  [layoutSettings]="layoutSettings"
+  [enableZoom]="true"
+  [autoZoom]="false"
+>
+  <ng-template #defsTemplate>
+    <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+      <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+    </svg:marker>
+  </ng-template>
+
+  <ng-template #nodeTemplate let-node>
+    <svg:g class="node" xmlns="http://www.w3.org/2000/xhtml" width="450" height="450">
+      <svg:foreignObject width="450" height="450" class="container">
+        <xhtml:div class="container" [id]="'node'+node.id">
+
+          <xhtml:div class="cardContainer" xmlns="http://www.w3.org/1999/xhtml" [style]="'border-top: 10px solid '+node.data.backgroundColor">
+            
+            <xhtml:div class="imgContainer">
+              <xhtml:div class="img" xmlns="http://www.w3.org/1999/xhtml" [style]="'background-image: url('+node.data.profile+')'">  
+              </xhtml:div>    
+            </xhtml:div>
+
+            <xhtml:div class="infoCard">
+              <h3 *ngIf="node.data.name || node.data.tipo" [style]="'background-color:'+node.data.backgroundColor+'; color:#fff; text-align: center; display:block; margin-bottom:10px; border-radius: 8px;'">
+                  {{(node.data.name)?node.data.name:(node.data.tipo)?node.data.tipo:''}}
+              </h3>
+              <h3 *ngIf="node.data.areas">Áreas: <span>{{node.data.areas}}</span></h3>
+              <h3 *ngIf="node.data.equipos">Equipos: <span>{{node.data.equipos}}</span></h3>
+              <h3 *ngIf="node.data.usuarios">Usuarios: <span>{{node.data.usuarios}}</span></h3>
+              <h3 *ngIf="node.data.tipo" style="font-weight: bold;">{{node.data.nombre}}</h3>
+              <h3 *ngIf="node.data.fullname">Nombre: <span>{{node.data.fullname}}</span></h3>
+              <xhtml:div class="infoCard-cargo">
+                <label *ngIf="node.data.cargo" [style]="'background-color:'+node.data.backgroundColor+'; color:#fff'">{{ node.data.cargo}}</label>
+              </xhtml:div>
+            </xhtml:div>
+
+            <xhtml:div class="delete" (click)="delete(node)">
+              <i class="far fa-window-close"></i>
+            </xhtml:div>
+            <xhtml:div class="agregar" (click)="agregar(node)">
+              <i class="far fa-plus-square"></i>
+            </xhtml:div>
+          
+          </xhtml:div>
+
+        </xhtml:div>
+      </svg:foreignObject>
+    </svg:g>
+  </ng-template>
+
+  <ng-template #linkTemplate let-link>
+    <svg:g class="edge">
+      <svg:path class="line" stroke-width="3" marker-end="url(#arrow)"></svg:path>
+      <!-- <svg:text class="edge-label" text-anchor="middle">
+        <textPath
+          class="text-path"
+          [attr.href]="'#' + link.id"
+          [style.dominant-baseline]="link.dominantBaseline"
+          startOffset="50%"
+        >
+          {{ link.label }}
+        </textPath>
+      </svg:text> -->
+    </svg:g>
+    <!-- <svg:g
+      class="linkMidpoint"
+      *ngIf="link.midPoint"
+      [attr.transform]="'translate(' + link.midPoint.x + ',' + link.midPoint.y + ')'"
+    >
+      <ellipse rx="30" ry="10" />
+      <svg:text alignment-baseline="central">{{ link.data.linkText }}</svg:text>
+    </svg:g> -->
+  </ng-template>
+</ngx-graph>

@@ -1,0 +1,126 @@
+<form autocomplete="off" [formGroup]="miFormulario2" (ngSubmit)="agregar('form2')" *ngIf="!data.data.tipo">
+    
+    <div class="grid-item">
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione un tipo</mat-label>
+            <mat-select formControlName="tipo">
+              <mat-option value='Equipo'>Equipo</mat-option>
+              <mat-option value='Área'>Área</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="form-grid" *ngIf="miFormulario2.controls.tipo.value">
+
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Nombre del {{miFormulario2.controls.tipo.value}}:</mat-label>
+                <input matInput
+                       formControlName="nombre"  
+                       type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Número de empleados:</mat-label>
+                <input matInput
+                       formControlName="cantEmp"  
+                       type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Nombre del Lider:</mat-label>
+                <input matInput
+                       formControlName="fullname"  
+                       type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Foto:</mat-label>
+                <input matInput
+                       formControlName="profile"  
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+    </div>
+
+    <div class="form-action">
+
+        <button mat-raised-button 
+                type="button"
+                (click)="cerrar()"
+                color="warn">
+            Cerrar
+        </button>
+
+        <button mat-raised-button 
+                type="submit"
+                color="primary"
+                [disabled]="miFormulario2.invalid">
+            Agregar
+        </button>
+
+    </div>
+
+</form>
+
+<form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="agregar('form')" *ngIf="data.data.tipo">
+
+    <div class="grid-item">
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione un cargo</mat-label>
+            <mat-select formControlName="cargo">
+              <mat-option value='Colaborador'>Colaborador</mat-option>
+              <mat-option value='Empleado'>Empleado</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="form-grid" *ngIf="miFormulario.controls.cargo.value">
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Nombre del {{miFormulario.controls.cargo.value}}:</mat-label>
+                <input matInput
+                       formControlName="fullname"  
+                       type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Profile:</mat-label>
+                <input matInput
+                       formControlName="profile"  
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+    </div>
+
+    <div class="form-action">
+
+        <button mat-raised-button 
+                type="button"
+                (click)="cerrar()"
+                color="warn">
+            Cerrar
+        </button>
+
+        <button mat-raised-button 
+                type="submit"
+                color="primary"
+                [disabled]="miFormulario.invalid">
+            Agregar
+        </button>
+
+    </div>
+
+</form>

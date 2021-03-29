@@ -1,0 +1,70 @@
+<form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="agregar()">
+
+    <div class="form-grid">
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Nombre:</mat-label>
+                <input matInput
+                       formControlName="name"  
+                       type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Foto:</mat-label>
+                <input matInput
+                       formControlName="profile"  
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Áreas:</mat-label>
+                <input matInput 
+                       formControlName="areas"
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Equipos:</mat-label>
+                <input matInput
+                       formControlName="equipos" 
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+        <div class="grid-item">
+            <mat-form-field class="example-full-field">
+                <mat-label>Usuarios:</mat-label>
+                <input matInput
+                       formControlName="usuarios" 
+                       type="text">
+            </mat-form-field>
+        </div>
+    
+    </div>
+
+    <div class="form-action">
+
+        <button mat-raised-button 
+                type="button"
+                (click)="cerrar()"
+                color="warn">
+            Cerrar
+        </button>
+
+        <button mat-raised-button 
+                type="submit"
+                color="primary"
+                [disabled]="miFormulario.invalid">
+            Agregar
+        </button>
+
+    </div>
+
+</form>
